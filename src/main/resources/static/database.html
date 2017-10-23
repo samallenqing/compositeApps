@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Composite Apps Employees</title>
+    <link rel='stylesheet' href='/webjars/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
+    <script src="/webjars/angularjs/1.3.8/angular.min.js"></script>
+    <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/controllers.js"></script>
+    <script src="app/services.js"></script>
+
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width:15%;
+            text-align:center
+
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.composite {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+
+</head>
+<body ng-app="myApp">
+
+<div class="container">
+    <h2 style="align-content: center">Composite Apps Employees</h2>
+    <div ng-controller="myCtrl as mc">
+
+        <input type="text" id="name" ng-model="name" placeholder="Enter Employee Name">
+        <a class="btn btn-default" ng-click="mc.findEmployeesByName(name)">Search</a>
+        <a class="btn btn-default" ng-click="mc.finAllEmployees()">Get all Employees</a>
+        <a class="btn btn-default" id="login" onclick="document.getElementById('id01').style.display='block'">Add</a><br/><br/>
+
+        <div id="id01" class="modal">
+
+            <form class="modal-content animate" action="/action_page.php" name="myForm" ng-submit="submitMyForm()">
+
+                <div class="container">
+                    <label><b>Name</b></label>
+                    <input type="text" placeholder="Enter Name" ng-model="unit.name" required>
+
+                    <label><b>Phone Number</b></label>
+                    <input type="text" placeholder="Enter PhoneNumber" ng-model="unit.phoneNumber" required>
+
+                    <label><b>Supervisor</b></label>
+                    <input type="text" placeholder="Enter Supervisor" ng-model="unit.supervisors" required>
+
+                    <button type="submit" style="background-color: blue" ng-click="mc.addNew(unit)" onclick="return goBack();" >Add</button>
+                </div>
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            function goBack() {
+                window.alert("Susscessful Added New Employee.")
+                window.location.replace("database.html");
+                return false;
+            }
+
+
+            var modal = document.getElementById('id01');
+
+            window.onclick = function kk(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+
+
+
+
+
+
+
+        <div>
+            <div ng-if="mc.employees.length > 0">
+                <p style="color: blue">Found <strong>{{mc.employees.length }}</strong> employees.</p>
+            </div>
+            <div ng-if="mc.employees.length == 0">
+                <p style="color: red">No employee found.</p>
+            </div>
+            <div>
+                <table style="width:90%">
+                    <thead>
+                    <tr>
+                        <th>Row</th>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Supervisor</th>
+                        <th>Function</th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="employee in mc.employees">
+                        <td>
+                            <strong>{{$index + 1}}</strong><br/>
+                            <div ng-repeat="link in employee.links">
+                                <a ng-href="{{link.href}}">Go to {{employee.name}}</a>
+                            </div>
+                        </td>
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.phoneNumber}}</td>
+                        <td>{{employee.supervisors}}</td>
+                        <td>
+                            <button class="btn-danger" ng-click="mc.deleteById(employee.id)">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+

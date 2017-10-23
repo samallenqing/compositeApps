@@ -1,0 +1,6 @@
+demo/model/Employee.class
+demo/service/EmployeeService.class
+demo/AssigmentApplication.class
+demo/rest/EmployeeRestController.class
+demo/repository/EmployeeRepository.class
+demo/service/impl/EmployeeServiceImpl.class

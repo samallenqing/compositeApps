@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Green Jim",
+    "phoneNumber": "(909) 595-1688",
+    "supervisors": "Tom Austin"
+  },
+  {
+    "name": "Jim Green",
+    "phoneNumber": "(909) 594-9717",
+    "supervisors": "Anna Fox"
+  },
+  {
+    "name": "Sam Allen",
+    "phoneNumber": "(909) 595-1688",
+    "supervisors": "Tom Austin"
+  },
+  {
+    "name": "Sarah Allen",
+    "phoneNumber": "(909) 594-9717",
+    "supervisors": "Tom Austin"
+  },
+  {
+    "name": "Allen Alice",
+    "phoneNumber": "(909) 612-1000",
+    "supervisors": "Tom Austin"
+  },
+  {
+    "name": "Jack Luis",
+    "phoneNumber": "(909) 598-2871",
+    "supervisors": "Anna Fox"
+  },
+  {
+    "name": "Rachel White",
+    "phoneNumber": "(909) 860-9162",
+    "supervisors": "Anna Fox"
+  },
+  {
+    "name": "Water White",
+    "phoneNumber": "(909) 598-0793",
+    "supervisors": "Anna Fox"
+  },
+  {
+    "name": "Alex Raven",
+    "phoneNumber": "(909) 444-3081",
+    "supervisors": "Mark King"
+  },
+  {
+    "name": "Moon Kim",
+    "phoneNumber": "(909) 861-5020",
+    "supervisors": "Mark King"
+  }
+]
